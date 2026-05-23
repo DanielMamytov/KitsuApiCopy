@@ -1,8 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.hilt.android)
-    alias(libs.plugins.ksp)
 }
 
 android {
@@ -51,8 +49,8 @@ dependencies {
     implementation(libs.okhttp.logging)
     implementation(libs.glide.compose)
 
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.compiler)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -61,11 +59,4 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.gson)
-    implementation(libs.okhttp)
-    implementation(libs.okhttp.logging)
-    implementation(libs.glide.compose)
-
 }

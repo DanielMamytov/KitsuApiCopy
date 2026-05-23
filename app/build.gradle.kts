@@ -43,6 +43,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
@@ -56,17 +57,10 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    implementation("com.squareup.retrofit2:retrofit:3.0.0")
-
-    // Gson converter для JSON
-    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
-
-    // OkHttp
-    implementation("com.squareup.okhttp3:okhttp:5.3.2")
-
-    // Logging interceptor, удобно смотреть запросы в Logcat
-    implementation("com.squareup.okhttp3:logging-interceptor:5.3.2")
-
-    implementation("com.github.bumptech.glide:compose:1.0.0-beta09")
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging)
+    implementation(libs.glide.compose)
 
 }

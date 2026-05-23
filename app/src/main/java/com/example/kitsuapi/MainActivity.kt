@@ -13,6 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import com.example.kitsuapi.ui.AnimeViewModel
+import com.google.firebase.auth.FirebaseAuth
 import com.example.kitsuapi.ui.screen.AnimeScreen
 import com.example.kitsuapi.ui.screen.RegistrationScreen
 import dagger.hilt.android.AndroidEntryPoint

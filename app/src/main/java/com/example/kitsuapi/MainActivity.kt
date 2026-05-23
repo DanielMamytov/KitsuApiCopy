@@ -13,17 +13,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import com.example.kitsuapi.ui.AnimeViewModel
-import com.example.kitsuapi.ui.AnimeViewModelFactory
 import com.example.kitsuapi.ui.screen.AnimeScreen
 import com.example.kitsuapi.ui.screen.RegistrationScreen
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    private val viewModel: AnimeViewModel by viewModels {
-        AnimeViewModelFactory(
-            (application as KitsuApplication).appContainer.getTrendingAnimeUseCase,
-        )
-    }
+    private val viewModel: AnimeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

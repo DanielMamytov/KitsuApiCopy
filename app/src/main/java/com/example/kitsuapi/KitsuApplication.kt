@@ -1,13 +1,7 @@
 package com.example.kitsuapi
 
 import android.app.Application
-import com.example.kitsuapi.di.AppContainer
+import dagger.hilt.android.HiltAndroidApp
 
-class KitsuApplication : Application() {
-    lateinit var appContainer: AppContainer
-
-    override fun onCreate() {
-        super.onCreate()
-        appContainer = AppContainer()
-    }
-}
+@HiltAndroidApp
+class KitsuApplication : Application()

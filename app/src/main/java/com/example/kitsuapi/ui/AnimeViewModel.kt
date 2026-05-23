@@ -1,17 +1,18 @@
 package com.example.kitsuapi.ui
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.kitsuapi.data.model.AnimeData
 import com.example.kitsuapi.domain.usecase.GetTrendingAnimeUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class AnimeViewModel(
+@HiltViewModel
+class AnimeViewModel @Inject constructor(
     private val getTrendingAnimeUseCase: GetTrendingAnimeUseCase,
 ) : ViewModel() {
 
@@ -29,18 +30,6 @@ class AnimeViewModel(
                     _uiState.value = AnimeUiState(isLoading = false, error = throwable.message)
                 }
         }
-    }
-}
-
-class AnimeViewModelFactory(
-    private val getTrendingAnimeUseCase: GetTrendingAnimeUseCase,
-) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(AnimeViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return AnimeViewModel(getTrendingAnimeUseCase) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
 

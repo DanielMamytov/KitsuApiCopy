@@ -11,6 +11,7 @@ composeBom = "2024.09.00"
 retrofit = "3.0.0"
 okhttp = "5.3.2"
 glideCompose = "1.0.0-beta09"
+firebaseBom = "34.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,6 +34,8 @@ retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", ver
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 glide-compose = { group = "com.github.bumptech.glide", name = "compose", version.ref = "glideCompose" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth-ktx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -18,6 +18,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -34,16 +35,23 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+enum class AuthMode {
+    Register,
+    Login,
+}
+
 @Composable
 fun RegistrationScreen(
     email: String,
     password: String,
     confirmPassword: String,
+    authMode: AuthMode,
     errorMessage: String?,
     isLoading: Boolean,
     onEmailChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
     onConfirmPasswordChange: (String) -> Unit,
+    onAuthModeChange: (AuthMode) -> Unit,
     onRegisterClick: () -> Unit,
 ) {
     val transition = rememberInfiniteTransition(label = "anime-bg")
@@ -92,7 +100,10 @@ fun RegistrationScreen(
                     color = Color(0xFFFFD7F3),
                 )
                 Text(
-                    text = "Создай аккаунт в аниме стиле",
+                    text = if (authMode == AuthMode.Register)
+                        "Создай аккаунт в аниме стиле"
+                    else
+                        "Войди в свой аниме аккаунт",
                     color = Color(0xFFEAC4FF),
                     fontSize = 16.sp,
                 )
@@ -116,15 +127,17 @@ fun RegistrationScreen(
                     modifier = Modifier.fillMaxWidth(),
                 )
 
-                OutlinedTextField(
-                    value = confirmPassword,
-                    onValueChange = onConfirmPasswordChange,
-                    label = { Text("Повтори пароль") },
-                    singleLine = true,
-                    visualTransformation = PasswordVisualTransformation(),
-                    colors = fieldColors(),
-                    modifier = Modifier.fillMaxWidth(),
-                )
+                if (authMode == AuthMode.Register) {
+                    OutlinedTextField(
+                        value = confirmPassword,
+                        onValueChange = onConfirmPasswordChange,
+                        label = { Text("Повтори пароль") },
+                        singleLine = true,
+                        visualTransformation = PasswordVisualTransformation(),
+                        colors = fieldColors(),
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
 
                 if (!errorMessage.isNullOrBlank()) {
                     Text(
@@ -142,7 +155,32 @@ fun RegistrationScreen(
                         .fillMaxWidth()
                         .height(52.dp),
                 ) {
-                    Text(if (isLoading) "Регистрация..." else "Зарегистрироваться")
+                    Text(
+                        when {
+                            isLoading && authMode == AuthMode.Register -> "Регистрация..."
+                            isLoading && authMode == AuthMode.Login -> "Вход..."
+                            authMode == AuthMode.Register -> "Зарегистрироваться"
+                            else -> "Войти"
+                        }
+                    )
+                }
+
+                TextButton(
+                    onClick = {
+                        onAuthModeChange(
+                            if (authMode == AuthMode.Register) AuthMode.Login else AuthMode.Register
+                        )
+                    },
+                    enabled = !isLoading,
+                    modifier = Modifier.align(Alignment.End),
+                ) {
+                    Text(
+                        text = if (authMode == AuthMode.Register)
+                            "Уже есть аккаунт? Войти"
+                        else
+                            "Нет аккаунта? Зарегистрироваться",
+                        color = Color(0xFFFFD7F3),
+                    )
                 }
             }
         }

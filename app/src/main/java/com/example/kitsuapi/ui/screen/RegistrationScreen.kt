@@ -178,7 +178,7 @@ fun RegistrationScreen(
                         text = if (authMode == AuthMode.Register)
                             "Уже есть аккаунт? Войти"
                         else
-                            "Назад к регистрации",
+                            "Нет аккаунта? Зарегистрироваться",
                         color = Color(0xFFFFD7F3),
                     )
                 }

@@ -9,6 +9,7 @@ import com.example.kitsuapi.ui.AnimeViewModel
 import com.example.kitsuapi.ui.AnimeViewModelFactory
 import com.example.kitsuapi.ui.screen.AnimeScreen
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val viewModel: AnimeViewModel by viewModels {
         AnimeViewModelFactory(

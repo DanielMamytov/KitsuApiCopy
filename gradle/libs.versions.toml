@@ -8,6 +8,7 @@ lifecycleRuntimeKtx = "2.8.4"
 activityCompose = "1.9.1"
 kotlin = "2.0.21"
 composeBom = "2024.09.00"
+firebaseBom = "34.1.0"
 retrofit = "2.11.0"
 okhttp = "4.12.0"
 glideCompose = "1.0.0-beta01"
@@ -38,6 +39,8 @@ okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor",
 glide-compose = { group = "com.github.bumptech.glide", name = "compose", version.ref = "glideCompose" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth-ktx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
